@@ -1,0 +1,13 @@
+// converte o cookie direto para JSON
+if (document.cookie) {
+  JSON.parse(
+    '{'+document.cookie.split(';')
+        .map(i => i)
+          .map(m => {
+              var res = m;
+              res = res.replace(' ','');
+              res = res.replace('=','":"');
+              return '"' + res + '"'
+          }).map(r => r).join()
+    +'}')
+ }
